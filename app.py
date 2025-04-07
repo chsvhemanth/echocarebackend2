@@ -4,6 +4,8 @@ import speech_recognition as sr
 from dotenv import load_dotenv
 import os
 
+
+
 load_dotenv()
 app = Flask(__name__)
 
@@ -50,4 +52,5 @@ def handle_audio():
         return jsonify({'error': 'Speech recognition failed'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+     port = int(os.environ.get("PORT", 5000))
+     app.run(host='0.0.0.0', port=port)
